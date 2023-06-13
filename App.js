@@ -1,12 +1,29 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import {NavigationContainer} from "@react-navigation/native";
+import {createNativeStackNavigator} from "@react-navigation/native-stack";
+import Home from "./src/components/Home";
+import PrintScreen from "./src/components/PrintScreen";
 
 export default function App() {
+  const stack= createNativeStackNavigator()
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+        <stack.Navigator>
+            <stack.Screen name="Home" component={Home} options={
+                {
+                    title: 'OPENFAC',
+                }
+            }/>
+            <stack.Screen name="Print" component={PrintScreen} options={
+                {
+                    title: 'Facture',
+                }
+            }/>
+
+        </stack.Navigator>
+
+    </NavigationContainer>
   );
 }
 
