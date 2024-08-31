@@ -120,7 +120,7 @@ export default  async function generateInvoiceTemplate(data) {
 <section class="info-all">
     <div class="info-owner">
         <h3>Cherif Abdoul Rahim</h3>
-        <h3>Adresse : Cosa</h3>
+        <h3>Adresse : Bantounka</h3>
         <h3>Téléphone : 622 31 89 77</h3>
         <h3>Email :cheriftatadiallo@gmail.com</h3>
     </div>
@@ -154,13 +154,14 @@ export default  async function generateInvoiceTemplate(data) {
             (item) => `                
                   <tr>
                     <td>${item.pc}</td>
-                    <td>${item.quantite}</td>
-                    <td>${item.prix}</td>
+
+                    <td>${item.quantite.padStart(2, '0')}</td>
+                    <td>${item.prix}/jour</td>
                     <td>${prixTTC(item.quantite,item.prix)}</td>
                   </tr>
                 `
         ).join('')
-        }            
+    }            
             <tr>
                 <td colspan="3">TOTAL</td>
                 <td>${prixTotalOfList(liste)}</td>
@@ -209,6 +210,5 @@ const prixTotalOfList = (liste) => {
     });
     return total;
 }
-
 
 
